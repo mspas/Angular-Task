@@ -10,15 +10,14 @@ const newState = (state: Item[], newData: Item[]) => {
 
 const _itemReducer = createReducer(
     defaultState,
-    on(itemActions.addItem, (state, action) => {
+    on(itemActions.addItemSuccess, (state, action) => {
         let item = {...action.item};
-        item.id = state.items.length + 1;
         return {
             ...state,
             items: [...state.items, item]
         }
     }),
-    on(itemActions.editItem, (state, action) => {
+    on(itemActions.editItemSuccess, (state, action) => {
         let newItemsArray: Item[] = [];
         state.items.forEach(item => {
             let temp = item.id === action.item.id ? action.item : item;
@@ -29,7 +28,7 @@ const _itemReducer = createReducer(
             items: newItemsArray
         }
     }),
-    on(itemActions.deleteItem, (state, action) => {
+    on(itemActions.deleteItemSuccess, (state, action) => {
         const index = state.items.indexOf(action.item);
         let newItemsArray = Object.assign([], state.items);
 
@@ -40,7 +39,14 @@ const _itemReducer = createReducer(
             ...state,
             items: newItemsArray
         }
+    }),
+    on(itemActions.getItemsSuccess, (state, action) => {
+        return {
+            ...state,
+            items: action.items
+        }
     })
+
 )
 
 export function itemReducer(state: ItemsState | undefined, action: Action) {

@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { ItemsEffects } from './core/state/effects/items.effects';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { appReducer } from './app.state';
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 10
-    })
+    }),
+    EffectsModule.forRoot([ItemsEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

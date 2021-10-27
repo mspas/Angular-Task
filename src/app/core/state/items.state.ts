@@ -6,7 +6,7 @@ export interface ItemsState {
 
 export const defaultState: ItemsState = {
   items: [
-    { id: -1, name: "Sample Item 1", quantity: 1}, 
-    { id: -2, name: "Sample Item 2", quantity: 2}
+    { id: -1, name: "Sample Item 1 APP", quantity: 1}, 
+    { id: -2, name: "Sample Item 2 APP", quantity: 2}
   ]
 }

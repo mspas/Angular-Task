@@ -27,11 +27,12 @@ export class AddItemComponent implements OnInit {
     if (!this.credentialsForm.valid) return;
     
     const item: Item = {
+      id: -1,
       name: this.credentialsForm.value.name,
       quantity: this.credentialsForm.value.quantity,
     }
 
-    this._store.dispatch(addItem({item}));
+    this._store.dispatch(addItem({ item }));
   }
 
 }
