@@ -1,12 +1,8 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import * as itemActions from '../actions/item.action';
-import { Item } from '../../models/item.model';
-import { defaultState, ItemsState } from '../items.state';
+import * as itemActions from './item.action';
+import { Item } from '../models/item.model';
+import { defaultState, ItemsState } from './items.state';
 
-
-const newState = (state: Item[], newData: Item[]) => {
-    return Object.assign({}, state, newData);
-}
 
 const _itemReducer = createReducer(
     defaultState,

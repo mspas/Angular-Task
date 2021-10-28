@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { Item } from "../../models/item.model";
+import { Item } from "../models/item.model";
 
 
 export const GET_ITEMS = '[Item] Get Items';

@@ -1,14 +1,15 @@
 import { ItemsState } from "./core/state/items.state";
-import { itemReducer } from './core/state/reducers/item.reducer';
-import { simpleReducer } from "./core/state/reducers/simple.reducer";
+import { itemReducer } from './core/state/item.reducer';
+import { sharedReducer } from "./shared/state/shared.reducer";
+import { SharedState } from "./shared/state/shared.state";
 
 export interface AppState {
     items: ItemsState;
-    message: string
+    shared: SharedState
   }
   
 
 export const appReducer = {
   items: itemReducer,
-  message: simpleReducer
+  shared: sharedReducer
 }

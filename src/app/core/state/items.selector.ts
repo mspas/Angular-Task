@@ -1,5 +1,6 @@
-import { ItemsState } from "../items.state";
+import { ItemsState } from "./items.state";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { AppState } from "src/app/app.state";
 
 const getItemsState = createFeatureSelector<ItemsState>('items');
 

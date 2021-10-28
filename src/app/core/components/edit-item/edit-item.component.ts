@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
-import { Item } from '../models/item.model';
-import { editItem } from '../state/actions/item.action';
+import { Item } from '../../models/item.model';
+import { editItem } from '../../state/item.action';
 
 @Component({
   selector: 'app-edit-item',

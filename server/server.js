@@ -43,7 +43,7 @@ app.put("/api/item", (req, res) => {
   }
 
   if (index < 0) {
-    res.json({ success: false, message: "Item not found!" });
+    res.status(400).send({ success: false, message: "Item not found!" });
     return;
   }
 
@@ -54,7 +54,7 @@ app.put("/api/item", (req, res) => {
 });
 
 app.delete("/api/item/:id", (req, res) => {
-  const idToDelete = req.params.id;
+  const idToDelete = parseInt(req.params.id);
   let index = -1;
 
   for (let i = 0; i < items.length; i++) {
@@ -66,7 +66,7 @@ app.delete("/api/item/:id", (req, res) => {
   }
 
   if (index < 0) {
-    res.json({ success: false, message: "Item not found!" });
+    res.status(400).send({ success: false, message: "Item not found!" });
     return;
   }
 

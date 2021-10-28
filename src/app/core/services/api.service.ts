@@ -12,7 +12,7 @@ export class ApiSercive {
 
     constructor(private _http: HttpClient) {}
 
-    getItems(): Observable<Item[]> {
+    getItems() {
         return this._http.get<Item[]>(`${this.apiURL}/item`);
     }
 

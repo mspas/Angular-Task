@@ -9,7 +9,7 @@ import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.state';
 import { EffectsModule } from '@ngrx/effects';
-import { ItemsEffects } from './core/state/effects/items.effects';
+import { ItemsEffects } from './core/state/items.effects';
 
 @NgModule({
   declarations: [
