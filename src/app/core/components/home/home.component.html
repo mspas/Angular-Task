@@ -1,5 +1,6 @@
 <main class="container">
     <app-add-item></app-add-item>
     <mat-spinner class="spinner" *ngIf="isLoading$ | async" [diameter]="50"></mat-spinner>
+    <mat-card *ngIf="errorMessage.length > 0" class="alert-box">{{ errorMessage }}</mat-card>
     <app-table></app-table>
 </main>

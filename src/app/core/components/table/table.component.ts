@@ -22,14 +22,12 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   //items$: Observable<Item[]>;
-  items: Item[] = [];
 
   tableColumns: string[] = ["name", "quantity", "action"];
-  dataSource = new MatTableDataSource<Item>(this.items);
+  dataSource = new MatTableDataSource<Item>([]);
 
   constructor(private store: Store<AppState>, public dialog: MatDialog, private _liveAnnouncer: LiveAnnouncer) {
     this.store.select(getItemsSelector).subscribe(data => {
-      this.items = data;
       this.dataSource.data = data;
     });
     this.store.dispatch(getItems());

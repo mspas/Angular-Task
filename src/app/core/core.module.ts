@@ -14,7 +14,7 @@ import { EditItemComponent } from './components/edit-item/edit-item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { MatSortModule } from '@angular/material/sort';
     ReactiveFormsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule
   ],
   exports: [
     HomeComponent

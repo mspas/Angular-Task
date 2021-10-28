@@ -1,16 +1,18 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const randomId = require("random-id");
 const bodyParser = require("body-parser");
 const port = 3000;
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "../ui/build")));
 
 let items = [
-  { id: 0, name: "Sample Item 1", quantity: 1 },
-  { id: 1, name: "Sample Item 2", quantity: 2 },
+  { id: 0, name: "Tomatoes", quantity: 5 },
+  { id: 1, name: "Minced meat", quantity: 1 },
+  { id: 2, name: "Onion", quantity: 2 },
+  { id: 3, name: "Garlic", quantity: 3 },
+  { id: 4, name: "Carrots", quantity: 1 },
+  { id: 5, name: "Soda", quantity: 1 },
 ];
 
 app.get("/api/item", (req, res) => {
@@ -43,7 +45,7 @@ app.put("/api/item", (req, res) => {
   }
 
   if (index < 0) {
-    res.status(400).send({ success: false, message: "Item not found!" });
+    res.status(400).send("Error! Item not found!");
     return;
   }
 
@@ -66,7 +68,7 @@ app.delete("/api/item/:id", (req, res) => {
   }
 
   if (index < 0) {
-    res.status(400).send({ success: false, message: "Item not found!" });
+    res.status(400).send("Error! Item not found!");
     return;
   }
 
@@ -76,5 +78,5 @@ app.delete("/api/item/:id", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server listening on the port::${port}`);
+  console.log(`Server listening on the port ${port}`);
 });

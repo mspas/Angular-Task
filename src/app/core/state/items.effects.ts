@@ -21,9 +21,13 @@ export class ItemsEffects {
                     return this._api.getItems().pipe(
                         map((items) => {
                             this._store.dispatch(loadingStop());
+                            this._store.dispatch(setErrorMessage({errorMessage: ""}));
                             return getItemsSuccess({ items });
                         }),
-                        catchError((error: any) => of(setErrorMessage(error.message)))
+                        catchError((error: any) =>{
+                            this._store.dispatch(loadingStop());
+                            return of(setErrorMessage({errorMessage: error.error}));
+                        })
                     );
                 })
             );
@@ -39,9 +43,13 @@ export class ItemsEffects {
                     return this._api.addItem(action.item).pipe(
                         map((response) => {
                             this._store.dispatch(loadingStop());
+                            this._store.dispatch(setErrorMessage({errorMessage: ""}));
                             return addItemSuccess({item: response.item});
                         }),
-                        catchError((error: any) => of(setErrorMessage(error.message)))
+                        catchError((error: any) =>{
+                            this._store.dispatch(loadingStop());
+                            return of(setErrorMessage({errorMessage: error.error}));
+                        })
                     );
                 })
             );
@@ -57,9 +65,13 @@ export class ItemsEffects {
                     return this._api.editItem(action.item).pipe(
                         map((response) => {
                             this._store.dispatch(loadingStop());
+                            this._store.dispatch(setErrorMessage({errorMessage: ""}));
                             return editItemSuccess({item: action.item});
                         }),
-                        catchError((error: any) => of(setErrorMessage(error.message)))
+                        catchError((error: any) =>{
+                            this._store.dispatch(loadingStop());
+                            return of(setErrorMessage({errorMessage: error.error}));
+                        })
                     );
                 })
             );
@@ -75,9 +87,13 @@ export class ItemsEffects {
                     return this._api.deleteItem(action.item.id).pipe(
                         map((response) => {
                             this._store.dispatch(loadingStop());
+                            this._store.dispatch(setErrorMessage({errorMessage: ""}));
                             return deleteItemSuccess({item: action.item});
                         }),
-                        catchError((error: any) => of(setErrorMessage(error.message)))
+                        catchError((error: any) =>{
+                            this._store.dispatch(loadingStop());
+                            return of(setErrorMessage({errorMessage: error.error}));
+                        })
                     );
                 })
             );
