@@ -1,4 +1,4 @@
-# TableTask
+# Angular Task
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
 
@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `npm start` in 'server/' directory to start server app.
 
-Run `npm start` (!) in main project directory in order to start the app with proxy configuration.
+Run `npm start` in main project directory in order to start the app with proxy configuration.
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
