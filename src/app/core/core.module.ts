@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditItemComponent } from './components/edit-item/edit-item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FormsModule, 
     ReactiveFormsModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSortModule
   ],
   exports: [
     HomeComponent

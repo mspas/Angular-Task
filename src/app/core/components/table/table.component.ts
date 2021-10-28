@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,6 +7,11 @@ import { Item } from '../../models/item.model';
 import { getItemsSelector } from '../../state/items.selector';
 import { EditItemComponent } from '../edit-item/edit-item.component';
 import { getItems, deleteItem } from '../../state/item.action';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import {LiveAnnouncer} from '@angular/cdk/a11y';
+
 
 @Component({
   selector: 'app-table',
@@ -14,16 +19,28 @@ import { getItems, deleteItem } from '../../state/item.action';
   styleUrls: ['./table.component.sass']
 })
 export class TableComponent implements OnInit {
-  items$: Observable<Item[]>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  //items$: Observable<Item[]>;
+  items: Item[] = [];
 
   tableColumns: string[] = ["name", "quantity", "action"];
+  dataSource = new MatTableDataSource<Item>(this.items);
 
-  constructor(private store: Store<AppState>, public dialog: MatDialog) {
-    this.items$ = this.store.select(getItemsSelector);
+  constructor(private store: Store<AppState>, public dialog: MatDialog, private _liveAnnouncer: LiveAnnouncer) {
+    this.store.select(getItemsSelector).subscribe(data => {
+      this.items = data;
+      this.dataSource.data = data;
+    });
     this.store.dispatch(getItems());
   }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   openDialog(item: Item) {
@@ -36,5 +53,13 @@ export class TableComponent implements OnInit {
 
   onDeleteItem(item: Item) {
     this.store.dispatch(deleteItem({item}));
+  }
+
+  announceSortChange(sortState: Sort) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 }
